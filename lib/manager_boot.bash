@@ -26,7 +26,7 @@ class { 'r10k':
 }
 EOF
 /opt/puppetlabs/bin/puppet apply /var/tmp/r10k.pp
-r10k deploy environment -p
+r10k deploy environment -pv
 cd /etc/puppetlabs/code/environments/production/
 bash ./new_keys_and_passwds.bash
 # temp fix to have correct fqdn for puppet, before permanent fix in dhclient
