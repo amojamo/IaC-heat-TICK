@@ -1,4 +1,4 @@
-# Kubernetes lab exercise
+# Pending
 
 This is a Heat template to launch a Kubernetes lab exercise. The servers are initialized based on [this Puppet control repo](https://github.com/githubgossin/control-repo-k8s).
 
