@@ -19,7 +19,7 @@ cat <<EOF > /var/tmp/r10k.pp
 class { 'r10k':
   sources => {
     'puppet' => {
-      'remote'  => 'https://d4cc015c36f59d54efc4eac30dc6035c5f573729@github.com/amojamo/imt3005tick.git',
+      'remote'  => 'https://github.com/amojamo/imt3005tick.git',
       'basedir' => '/etc/puppetlabs/code/environments',
       'prefix'  => false,
     },
