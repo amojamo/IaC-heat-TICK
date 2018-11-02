@@ -5,10 +5,9 @@ dpkg -i "$tempdeb"
 apt-get update
 apt-get -y install puppet-agent
 echo "$(ip a | grep -Eo 'inet ([0-9]*\.){3}[0-9]*' | tr -d 'inet ' | grep 192.168.180) $(hostname)" >> /etc/hosts
-
 echo "manager_ip_address manager" >> /etc/hosts
 /opt/puppetlabs/bin/puppet resource service puppet ensure=stopped enable=true
-/opt/puppetlabs/bin/puppet config set server puppetmaster --section main
+/opt/puppetlabs/bin/puppet config set server manager --section main
 /opt/puppetlabs/bin/puppet config set runinterval 300 --section main
 /opt/puppetlabs/bin/puppet agent -t # request certificate
 /opt/puppetlabs/bin/puppet agent -t # configure 
