@@ -3,13 +3,13 @@ tempdeb=$(mktemp /tmp/debpackage.XXXXXXXXXXXXXXXXXX) || exit 1
 wget -O "$tempdeb" https://apt.puppetlabs.com/puppet6-release-bionic.deb
 dpkg -i "$tempdeb"
 apt-get update
-apt-get -y install puppetserver pwgen
+apt-get -y install puppetserver
 /opt/puppetlabs/bin/puppet resource service puppet ensure=stopped enable=true
 /opt/puppetlabs/bin/puppet resource service puppetserver ensure=stopped enable=true
 
 # configure puppet agent, and puppetserver autosign
-/opt/puppetlabs/bin/puppet config set server manager --section main
-/opt/puppetlabs/bin/puppet config set certname manager --section main
+/opt/puppetlabs/bin/puppet config set server manager.star.wars --section main
+/opt/puppetlabs/bin/puppet config set certname manager.star.wars --section main
 /opt/puppetlabs/bin/puppet config set runinterval 300 --section main
 /opt/puppetlabs/bin/puppet config set autosign true --section master
 
@@ -38,4 +38,9 @@ echo "$(ip a | grep -Eo 'inet ([0-9]*\.){3}[0-9]*' | tr -d 'inet ' | grep -v '^1
 /opt/puppetlabs/bin/puppet agent -t # once more to update exported resources
 /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
 
-
+cat <<EOF >> /etc/netplan/50-cloud-init.yaml
+            nameservers:
+                search: [star.wars]
+                addresses: [127.0.0.1]
+EOF
+netplan apply
