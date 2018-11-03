@@ -9,7 +9,6 @@ apt-get -y install puppetserver
 
 # configure puppet agent, and puppetserver autosign
 /opt/puppetlabs/bin/puppet config set server manager.star.wars --section main
-/opt/puppetlabs/bin/puppet config set certname manager.star.wars --section main
 /opt/puppetlabs/bin/puppet config set runinterval 300 --section main
 /opt/puppetlabs/bin/puppet config set autosign true --section master
 
