@@ -9,6 +9,7 @@ apt-get -y install puppetserver
 
 # configure puppet agent, and puppetserver autosign
 /opt/puppetlabs/bin/puppet config set server manager.star.wars --section main
+/opt/puppetlabs/bin/puppet config set certname manager.star.wars --section main
 /opt/puppetlabs/bin/puppet config set runinterval 300 --section main
 /opt/puppetlabs/bin/puppet config set autosign true --section master
 
@@ -29,8 +30,7 @@ EOF
 r10k deploy environment -pv
 
 # Add hostname to hosts
-echo "$(ip a | grep -Eo 'inet ([0-9]*\.){3}[0-9]*' | tr -d 'inet ' | grep -v '^127') $(hostname)" >> /etc/hosts
-
+echo "$(ip a | grep -Eo 'inet ([0-9]*\.){3}[0-9]*' | tr -d 'inet ' | grep -v '^127') $(hostname).star.wars $(hostname)" >> /etc/hosts
 /opt/puppetlabs/bin/puppet resource service puppetserver ensure=running enable=true
 /opt/puppetlabs/bin/puppet agent -t # request certificate
 /opt/puppetlabs/bin/puppet agent -t # configure manager
