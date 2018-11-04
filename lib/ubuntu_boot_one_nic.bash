@@ -12,9 +12,3 @@ echo "manager_ip_address manager.star.wars manager" >> /etc/hosts
 /opt/puppetlabs/bin/puppet agent -t # request certificate
 /opt/puppetlabs/bin/puppet agent -t # configure 
 /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
-#cat <<EOF >> /etc/netplan/50-cloud-init.yaml
-#            nameservers:
-#                search: [star.wars]
-#                addresses: [dns_ip_address]
-#EOF
-#netplan apply

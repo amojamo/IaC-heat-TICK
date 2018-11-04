@@ -36,10 +36,3 @@ echo "$(ip a | grep -Eo 'inet ([0-9]*\.){3}[0-9]*' | tr -d 'inet ' | grep -v '^1
 /opt/puppetlabs/bin/puppet agent -t # configure manager
 /opt/puppetlabs/bin/puppet agent -t # once more to update exported resources
 /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
-
-#cat <<EOF >> /etc/netplan/50-cloud-init.yaml
-#            nameservers:
-#                search: [star.wars]
-#                addresses: [127.0.0.1]
-#EOF
-#netplan apply
