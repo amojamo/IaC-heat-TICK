@@ -4,7 +4,7 @@ wget -O "$tempdeb" https://apt.puppetlabs.com/puppet6-release-bionic.deb
 dpkg -i "$tempdeb"
 apt-get update
 apt-get -y install puppet-agent
-echo "$(ip a | grep -Eo 'inet ([0-9]*\.){3}[0-9]*' | tr -d 'inet ' | grep 192.168.180) $(hostname)" >> /etc/hosts
+echo "$(ip a | grep -Eo 'inet ([0-9]*\.){3}[0-9]*' | tr -d 'inet ' | grep 192.168.180) $(hostname).star.wars $(hostname)" >> /etc/hosts
 echo "manager_ip_address manager.star.wars manager" >> /etc/hosts
 /opt/puppetlabs/bin/puppet resource service puppet ensure=stopped enable=true
 /opt/puppetlabs/bin/puppet config set server manager.star.wars --section main
