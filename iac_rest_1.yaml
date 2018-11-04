@@ -35,7 +35,7 @@ resources:
   worker:
     type: OS::Heat::ResourceGroup
     properties:
-      count: 1
+      count: 2
       resource_def:
         type: lib/managed_linux_server_one_nic.yaml
         properties:
