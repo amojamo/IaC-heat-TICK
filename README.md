@@ -12,4 +12,4 @@ git clone https://github.com/githubgossin/IaC-heat-k8s.git
 cd IaC-heat-k8s
 openstack stack create k8s-lab -t iac_top.yaml -e iac_top_env.yaml
 ```
-Access Chronograf through your browser at http://floatingip:8888
+Access Chronograf through your browser at http://*floatingip*:8888
