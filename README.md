@@ -1,4 +1,4 @@
-# Heat Template used for deploying TICK-stack - Forked from githubgossin
+# Heat Template used for deploying TICK-stack - Forked from [githubgossin](https://github.com/githubgossin/IaC-heat-k8s)
 
 This is a Heat template to launch a TICK-stack, for a project in IMT3005 IaC. The servers are initialized based on [this Puppet control repo](https://github.com/amojamo/imt3005tick).
 
